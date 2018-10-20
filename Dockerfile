@@ -3,7 +3,7 @@ FROM debian:jessie
 
 MAINTAINER Michael Klein <mwklein@happycynic.com>
 
-ENV NGINX_VERSION release-1.14.0
+ENV NGINX_VERSION release-1.15.5
 
 # Use jessie-backports for openssl >= 1.0.2
 # This is required by nginx-auth-ldap when ssl_check_cert is turned on.
