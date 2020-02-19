@@ -1,16 +1,16 @@
 # Based on the Dockerfile from https://github.com/g17/nginx-ldap
-FROM debian:jessie
+FROM debian:stretch
 
 MAINTAINER Michael Klein <mwklein@happycynic.com>
 
-ENV NGINX_VERSION release-1.15.5
+ENV NGINX_VERSION release-1.16.1
 
-# Use jessie-backports for openssl >= 1.0.2
+# Use stretch-backports for openssl >= 1.0.2
 # This is required by nginx-auth-ldap when ssl_check_cert is turned on.
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections \
-	&& echo 'deb http://ftp.debian.org/debian/ jessie-backports main' > /etc/apt/sources.list.d/backports.list \
+	&& echo 'deb http://ftp.debian.org/debian/ stretch-backports main' > /etc/apt/sources.list.d/backports.list \
 	&& apt-get update \
-	&& apt-get install -t jessie-backports -y \
+	&& apt-get install -t stretch-backports -y \
 		ca-certificates \
 		git \
 		gcc \
